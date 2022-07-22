@@ -1,0 +1,61 @@
+/*=============================================
+=            <MorphableRect />            =
+=============================================*/
+
+.section__container.is-selected {
+  z-index: 100;
+}
+
+.is-opened .section__container {
+  z-index: 200;
+}
+
+/*=====  End of <MorphableRect />  ======*/
+
+/*=============================================
+=            <Label />            =
+=============================================*/
+
+.is-selected .section__label {
+  cursor: move;
+}
+
+/*=====  End of <Label />  ======*/
+
+/*=============================================
+=            <Corner />            =
+=============================================*/
+
+.section__corner {
+  // Positioning
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 101;
+}
+
+.section__corner__point {
+  // Display and Box Model
+  height: 12px;
+  width: 12px;
+
+  // Others
+  cursor: move;
+  background-color: var(--jumbotron-background-color);
+  border: 2px solid white;
+  border-radius: 50%;
+  box-shadow: 0 0 2px lightslategray;
+  transform: translate(-50%, -50%);
+}
+
+/*=====  End of <Corner />  ======*/
+
+/*=============================================
+=            MISC            =
+=============================================*/
+
+.section::after {
+  box-shadow: none !important; // Prevent highlight borders on the Block
+}
+
+/*=====  End of MISC  ======*/

@@ -1,0 +1,59 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "blaze/jumbotron",
+  "version": "0.1.0",
+  "title": "Jumbotron",
+  "category": "widgets",
+  "icon": "smiley",
+  "description": "A canvas to house Section blocks within",
+  "attributes": {
+    "height": {
+      "type": "string",
+      "default": "100vh"
+    },
+    "width": {
+      "type": "string",
+      "default": "100%"
+    },
+    "padding": {
+      "type": "string",
+      "default": "16px"
+    },
+    "backgroundColor": {
+      "type": "string",
+      "default": "black"
+    },
+    "backButtonBackgroundColor": {
+      "type": "string",
+      "default": "magenta"
+    },
+    "backButtonIconColor": {
+      "type": "string",
+      "default": "white"
+    },
+    "backButtonIconSize": {
+      "type": "string",
+      "default": "medium"
+    },
+    "backButtonMargin": {
+      "type": "string",
+      "default": "2vmax"
+    },
+    "renderedHeight": {
+      "type": "number"
+    },
+    "renderedWidth": {
+      "type": "number"
+    }
+  },
+  "providesContext": {
+    "blaze/jumbotron-rendered-height": "renderedHeight",
+    "blaze/jumbotron-rendered-width": "renderedWidth"
+  },
+  "textdomain": "jumbotron",
+  "editorScript": "file:./index.js",
+  "viewScript": "file:./view.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}

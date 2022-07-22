@@ -1,0 +1,40 @@
+/**
+ *
+ * Utility definitions
+ *
+ */
+
+@function pow($number, $exponent) {
+  $value: 1;
+
+  @if $exponent > 0 {
+    @for $i from 1 through $exponent {
+      $value: $value * $number;
+    }
+  }
+
+  @return $value;
+}
+
+$transitionDuration: 0.4s;
+$transitionEasing: ease-in-out;
+
+@keyframes stretch {
+  from {
+    transform: scaleY(1.5);
+  }
+  to {
+    transform: scaleY(0.5);
+  }
+}
+
+@keyframes appear {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}

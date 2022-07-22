@@ -1,0 +1,60 @@
+@import "../../shared_utils/_helpers.scss";
+
+.jumbotron {
+  // Positioning
+  position: relative;
+  z-index: 1;
+
+  // Display and Box Model
+  width: var(--jumbotron-width);
+  height: var(--jumbotron-height);
+  padding: var(--jumbotron-padding);
+
+  // Others
+  background-color: var(--jumbotron-background-color);
+  overflow: hidden;
+}
+
+.jumbotron__back-button {
+  // Positioning
+  position: fixed;
+  top: calc(var(--jumbotron-padding) + var(--jumbotron-back-button-margin));
+  right: calc(var(--jumbotron-padding) + var(--jumbotron-back-button-margin));
+  z-index: 10;
+
+  // Display and Box Model
+  padding: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  // Others
+  transition: transform $transitionEasing $transitionDuration,
+    opacity $transitionEasing $transitionDuration;
+  transform: translateX(20vw) scale(0.1);
+  opacity: 0;
+
+  cursor: pointer;
+  background-color: var(--jumbotron-back-button-background-color);
+  border: none;
+  border-radius: 50%;
+
+  svg {
+    fill: var(--jumbotron-back-button-icon-color);
+  }
+}
+
+.jumbotron__sections-wrapper {
+  // Positioning
+  position: relative;
+  z-index: 1;
+
+  // Display and Box Model
+  height: 100%;
+  width: 100%;
+}
+
+.is-section-opened .jumbotron__back-button {
+  transform: none;
+  opacity: 1;
+}

@@ -1,0 +1,62 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "blaze/section",
+  "version": "0.1.0",
+  "title": "Section",
+  "category": "widgets",
+  "icon": "heart",
+  "description": "A fixed positioned section",
+  "attributes": {
+    "sourcePageSlug": {
+      "type": "string",
+      "default": "sample-page"
+    },
+    "corners": {
+      "type": "array",
+      "default": [
+        [25, 25],
+        [75, 25],
+        [75, 75],
+        [25, 75]
+      ]
+    },
+    "backgroundColor": {
+      "type": "string",
+      "default": "#16d97e"
+    },
+    "label": {
+      "type": "string",
+      "default": "Section"
+    },
+    "labelPosition": {
+      "type": "array",
+      "default": [50, 50]
+    },
+    "labelRotation": {
+      "type": "number",
+      "default": 0
+    },
+    "labelColor": {
+      "type": "string",
+      "default": "black"
+    },
+    "labelFontFamily": {
+      "type": "string",
+      "default": "Comfortaa"
+    },
+    "labelFontSize": {
+      "type": "number",
+      "default": 48
+    }
+  },
+  "usesContext": [
+    "blaze/jumbotron-rendered-height",
+    "blaze/jumbotron-rendered-width"
+  ],
+  "parent": ["blaze/jumbotron"],
+  "textdomain": "section",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}

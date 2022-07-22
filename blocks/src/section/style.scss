@@ -1,0 +1,228 @@
+@import "../../shared_utils/_helpers.scss";
+
+/*=============================================
+=            <MorphableRect />            =
+=============================================*/
+
+.section__container {
+  // Positioning
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+
+  // Display and Box Model
+  height: var(--jumbotron-rendered-height);
+  width: var(--jumbotron-rendered-width);
+
+  // Others
+  border-radius: 8px;
+  clip-path: var(--section-clip-path);
+  background-color: var(--section-background-color);
+  transition: clip-path $transitionEasing $transitionDuration;
+}
+
+.is-opened .section__container {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+/*=====  End of <MorphableRect />  ======*/
+
+/*=============================================
+=            <Label />                        =
+=============================================*/
+
+.section__label {
+  // Positioning
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+
+  // Display and Box Model
+  padding: var(--jumbotron-padding);
+
+  // Others
+  cursor: pointer;
+  transform: translate(-50%, -50%) var(--section-label-translation);
+  transition: transform $transitionEasing $transitionDuration;
+}
+
+.section__label__wrapper {
+  // Positioning
+  position: relative;
+
+  // Display and Box Model
+  height: 100%;
+  width: 100%;
+
+  // Others
+  transform: var(--section-label-rotation);
+  transition: transform $transitionEasing $transitionDuration;
+}
+
+.section__label__text {
+  // Display and Box Model
+  margin: 0;
+
+  // Others
+  color: var(--section-label-color);
+  font-family: var(--section-label-font-family);
+  font-size: var(--section-label-font-size);
+  user-select: none;
+}
+
+.section__label__clone {
+  // Positioning
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+
+  // Display and Box Model
+  margin: 0;
+
+  // Others
+  opacity: 0;
+  color: rgba(0, 0, 0, 0);
+  -webkit-text-stroke: 1px var(--section-label-color);
+  font-family: var(--section-label-font-family);
+  font-size: var(--section-label-font-size);
+  user-select: none;
+  pointer-events: none;
+
+  transition: transform $transitionEasing $transitionDuration,
+    opacity $transitionEasing $transitionDuration;
+
+  &:nth-of-type(odd) {
+    opacity: 0.1;
+  }
+}
+
+.is-opened .section__label {
+  cursor: default;
+  transform: none !important;
+}
+
+.is-opened .section__label__wrapper {
+  transform: none;
+}
+
+.is-label-hovered .section__label__clone {
+  z-index: 1;
+  @for $i from 1 through 4 {
+    &:nth-of-type(#{$i}) {
+      transform: translateY(15% + pow($i, 3) * 3%);
+      opacity: (5 - $i) * 0.05;
+    }
+  }
+}
+
+.is-opened .is-label-hovered .section__label__clone {
+  transform: none; // Prevent hovering effects after the section has been opened
+}
+
+/*=====  End of <Label />  ======*/
+
+/*=============================================
+=            <Content />            =
+=============================================*/
+
+.section__content {
+  --top: calc(
+    var(--section-label-font-size) + var(--jumbotron-padding) + 0.025 *
+      var(--jumbotron-rendered-height)
+  );
+  // Positioning
+  position: absolute;
+  top: var(
+    --top
+  ); // label font size + label's padding + 2.5% of rendered height
+  left: 0;
+  z-index: -1;
+
+  // Display and Box Model
+  height: calc(var(--jumbotron-rendered-height) - 1.5 * var(--top));
+  width: 100%;
+  padding: var(--jumbotron-padding);
+
+  // Others
+  color: var(--section-label-color);
+  cursor: pointer;
+  overflow: auto;
+
+  // Hide scrollbar
+  scrollbar-width: 0;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.is-opened .section__content {
+  cursor: auto;
+}
+
+.section__content__loader {
+  // Display and Box Model
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  // Others
+  opacity: 0;
+  transition: opacity $transitionDuration $transitionEasing;
+}
+
+.is-opened .section__content__loader {
+  opacity: 1;
+}
+
+.section__content__loader__bar {
+  // Display and Box Model
+  height: 5vh;
+  width: 8px;
+
+  // Others
+  animation: stretch 10 * $transitionDuration $transitionEasing infinite
+    alternate;
+  background-color: var(--section-label-color);
+  border-radius: 8px;
+
+  @for $i from 1 through 4 {
+    &:nth-of-type(#{$i}) {
+      animation-delay: $i * $transitionDuration;
+    }
+  }
+}
+
+.section__content__fetched-content {
+  // Display and Box Model
+  max-width: 768px;
+
+  // Others
+  line-height: 1.4;
+  font-family: sans-serif;
+
+  opacity: 0;
+  transform: translateY(100px);
+  animation: appear $transitionDuration $transitionEasing;
+  transition: opacity $transitionDuration $transitionEasing,
+    transform $transitionDuration $transitionEasing;
+
+  img {
+    float: right;
+    margin: 8px;
+    border-radius: 4px;
+  }
+}
+
+.is-opened .section__content__fetched-content {
+  opacity: 1;
+  transform: none;
+}
+
+/*=====  End of <Content />  ======*/
