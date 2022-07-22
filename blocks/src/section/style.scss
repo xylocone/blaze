@@ -187,7 +187,7 @@
   width: 8px;
 
   // Others
-  animation: stretch 10 * $transitionDuration $transitionEasing infinite
+  animation: stretch 2 * $transitionDuration $transitionEasing infinite
     alternate;
   background-color: var(--section-label-color);
   border-radius: 8px;
