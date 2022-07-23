@@ -8,7 +8,7 @@ Blaze is essentially a collection of two blocks: _Jumbotron_ and _Section_. _Sec
 
 ## How to use?
 
-- Download `blaze.zip` from above and place it in your `themes/` directory.
+- Download `blaze.zip` from [here](http://blaze.coolpage.biz/blaze.zip) and place it in your `themes/` directory.
 - Blaze has _Section_ blocks, which fetch content from pages with the specified slug. So, create some pages and note their slugs.
 - In the _Site Editor_, open the _Front Page_ template. Edit the blocks and their properties to your desire. To change the source from which a _Section_ block fetches its content, change its _Source Page Slug_ property.
 
